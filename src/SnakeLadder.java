@@ -17,6 +17,21 @@ class Player{
 		}
 	}
 	
+	public int nextMove() {
+		Random random = new Random();
+		int nextMove = random.nextInt(3);
+		if(nextMove == 0) {
+			System.out.println("Snake");
+		}
+		else if(nextMove == 1) {
+			System.out.println("No Move");
+		}
+		else {
+			System.out.println("Ladder");
+		}
+		return nextMove;
+	}
+	
 }
 
 class Die{
@@ -33,6 +48,7 @@ public class SnakeLadder {
 		Die die = new Die();
 		Player p1 = new Player("Player 1");
 		die.rollDie();
+		p1.nextMove();
 	}
 	
 }
