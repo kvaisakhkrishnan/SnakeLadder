@@ -63,14 +63,17 @@ public class SnakeLadder {
 				if(move == 0) {
 					roll = -1 * roll;
 					p1.setPosition(roll);
+					chance = 1;
 				}
 				else if(move == 1) {
 					//No Move
+					chance = 1;
 				}
 				else {
 					p1.setPosition(roll);
+					chance = 0;
 				}
-				chance = 1;
+				
 			}
 			else {
 				int move = p2.nextMove();
@@ -78,14 +81,16 @@ public class SnakeLadder {
 				if(move == 0) {
 					roll = -1 * roll;
 					p2.setPosition(roll);
+					chance = 0;
 				}
 				else if(move == 1) {
 					//No Move
+					chance = 0;
 				}
 				else {
 					p2.setPosition(roll);
+					chance = 1;
 				}
-				chance = 0;
 			}
 
 		}
