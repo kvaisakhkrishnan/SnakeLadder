@@ -2,10 +2,12 @@ import java.util.Random;
 class Player{
 	private String name;
 	private int position;
+	private int noOfRolls;
 	Player(String name){
 		System.out.println("Player " + name + " created");
 		this.name = name;
 		position = 0;
+		noOfRolls = 0;
 	}
 	public int getPosition(){
 		return position;
@@ -15,6 +17,12 @@ class Player{
 			position += moves;
 			System.out.println("Player at position: "+ position);
 		}
+	}
+	public int getNoOfRolls() {
+		return noOfRolls;
+	}
+	public void setNoOfRolls() {
+		noOfRolls += 1;
 	}
 	
 	public int nextMove() {
@@ -49,6 +57,7 @@ public class SnakeLadder {
 		while(p1.getPosition() < 100) {
 			int roll = die.rollDie();
 			int move = p1.nextMove();
+			p1.setNoOfRolls();
 			if(move == 0) {
 				roll = -1 * roll;
 				p1.setPosition(roll);
@@ -61,6 +70,7 @@ public class SnakeLadder {
 			}
 		}
 		System.out.println("PLayer Won");
+		System.out.println("No of die rolls to win: "+ p1.getNoOfRolls());
 	}
 	
 	public static void main(String args[]) {
