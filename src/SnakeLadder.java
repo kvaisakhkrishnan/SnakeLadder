@@ -11,7 +11,7 @@ class Player{
 		return position;
 	}
 	public void setPosition(int moves) {
-		if(position + moves <= 100) {
+		if(position + moves <= 100 && position + moves >= 0) {
 			position += moves;
 			System.out.println("Player at position: "+ position);
 		}
@@ -44,11 +44,29 @@ class Die{
 }
 
 public class SnakeLadder {
+	
+	public static void playGame(Player p1, Die die) {
+		while(p1.getPosition() < 100) {
+			int roll = die.rollDie();
+			int move = p1.nextMove();
+			if(move == 0) {
+				roll = -1 * roll;
+				p1.setPosition(roll);
+			}
+			else if(move == 1) {
+				//No Move
+			}
+			else {
+				p1.setPosition(roll);
+			}
+		}
+		System.out.println("PLayer Won");
+	}
+	
 	public static void main(String args[]) {
 		Die die = new Die();
 		Player p1 = new Player("Player 1");
-		die.rollDie();
-		p1.nextMove();
+		playGame(p1, die);
 	}
 	
 }
